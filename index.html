@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<ul>
+{% for object in site.data.graph %}
+<li>
+  <a href="{% object_url object["uri"] %}">{{ object["uri"] }} - {{ object.properties["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"] }}</a>
+</li>
+{% endfor %}
+</ul>
