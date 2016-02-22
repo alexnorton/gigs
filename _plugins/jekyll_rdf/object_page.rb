@@ -10,7 +10,7 @@ module JekyllRDF
     def initialize(site, base, graph, subject)
       @site = site
       @base = base
-      @name = subject.to_s.downcase.strip.gsub(/([^\w-]+)/, "-")
+      @name = JekyllRDF::ObjectUrlGenerator.generate(subject.to_s)
       @graph = graph
       @subject = subject
 

@@ -1,0 +1,22 @@
+---
+layout: default
+rdf:
+  subject: >
+    SELECT *
+    WHERE {
+      ?subject a <mo:MusicGroup>.
+    }
+  queries:
+    artist: |
+      SELECT *
+      WHERE {
+        <{{ subject }}> <foaf:name> ?name.
+      }
+    events: |
+      SELECT *
+      WHERE {
+        ?event <mo:performer> <{{ subject }}>;
+      }
+---
+<pre>{{ page.artist }}</pre>
+<pre>{{ page.events }}</pre>
