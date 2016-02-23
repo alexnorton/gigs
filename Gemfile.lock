@@ -4,9 +4,8 @@ GEM
     addressable (2.4.0)
     bcp47 (0.3.3)
       i18n
-    bond (0.5.1)
     builder (3.2.2)
-    coderay (1.1.0)
+    coderay (1.1.1)
     colorator (0.1)
     ebnf (1.0.0)
       rdf (~> 1.1)
@@ -18,11 +17,7 @@ GEM
       tilt
     htmlentities (4.3.4)
     i18n (0.7.0)
-    iruby (0.2.8)
-      bond (~> 0.5)
-      mimemagic (~> 0.3)
-      multi_json (~> 1.11)
-    jekyll (3.0.1)
+    jekyll (3.1.2)
       colorator (~> 0.1)
       jekyll-sass-converter (~> 1.0)
       jekyll-watch (~> 1.1)
@@ -33,7 +28,7 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
-    jekyll-watch (1.3.0)
+    jekyll-watch (1.3.1)
       listen (~> 3.0)
     json-ld (1.99.0)
       multi_json (~> 1.11)
@@ -62,25 +57,23 @@ GEM
       sparql (~> 1.99)
       sparql-client (~> 1.99)
     liquid (3.0.6)
-    listen (3.0.5)
+    listen (3.0.6)
       rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
+      rb-inotify (>= 0.9.7)
     mercenary (0.3.5)
     method_source (0.8.2)
-    mimemagic (0.3.1)
     mini_portile2 (2.0.0)
     multi_json (1.11.2)
     net-http-persistent (2.9.4)
-    nokogiri (1.6.7.1)
+    nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rb-fsevent (0.9.7)
-    rb-inotify (0.9.5)
+    rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    rbczmq (1.7.9)
     rdf (1.99.1)
       link_header (~> 0.0, >= 0.0.8)
     rdf-aggregate-repo (1.99.0)
@@ -154,11 +147,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  iruby
   jekyll
   linkeddata
   pry
-  rbczmq
 
 BUNDLED WITH
    1.11.2

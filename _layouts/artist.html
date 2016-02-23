@@ -12,11 +12,12 @@ rdf:
       WHERE {
         <{{ subject }}> <foaf:name> ?name.
       }
-    events: |
-      SELECT *
-      WHERE {
-        ?event <mo:performer> <{{ subject }}>;
-      }
+    events:
+      - |
+        SELECT *
+        WHERE {
+          ?event <mo:performer> <{{ subject }}>;
+        }
 ---
 <pre>{{ page.artist }}</pre>
 <pre>{{ page.events }}</pre>
