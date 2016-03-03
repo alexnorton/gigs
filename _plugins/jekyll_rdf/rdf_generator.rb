@@ -8,45 +8,58 @@ module JekyllRDF
   class RDFGenerator < Jekyll::Generator
 
     def generate(site)
-      graph = RDF::Graph.new
+      @site = site
+      @graph = RDF::Graph.new
 
       Dir["_graph/*"].each do |file|
-        graph << RDF::Graph.load(file)
+        @graph << RDF::Graph.load(file)
       end
 
-      rdf_layouts = site.layouts.select { |_, v| v.data["rdf"] }
-
-      rdf_layouts.each do |name, layout|
-        query = SPARQL.parse(layout.data["rdf"]["subject"])
-        query.execute(graph).each do |solution|
-          site.pages << RDFPage.new(site, graph, layout, solution.subject)
-        end
-      end
+      index = site.pages.detect {|page| page.name == "index.html"}
 
       # binding.pry
 
-      # puts site.layouts.to_json
+      subject_pages
+      page_queries
+    end
 
+    def subject_pages
+      @site.config["rdf"]["subjects"].each do |subject_config|
+        query = SPARQL.parse subject_config["query"]
+        query.execute(@graph).each do |solution|
+          subject = solution.subject
 
-      # Dir["_templates/*"].each do |template|
-      #   read_yaml(template)
-      # end
+          solution_hash = Hash[
+            solution.to_h.map{ |k, v| [k.to_s, v.to_s] }
+          ]
 
-      #
-      # site.data["graph"] = graph.statements.group_by(&:subject).map do |subject, statements|
-      #   {
-      #     "uri"        => subject.to_s,
-      #     "properties" => Hash[statements.map do |statement|
-      #       [statement.predicate.to_s, statement.object.to_s]
-      #     end]
-      #   }
-      # end
+          name = Liquid::Template.parse(
+            subject_config["url"]
+          ).render(solution_hash)
 
-      # site.pages << SubjectsPage.new(site, site.source, graph)
+          @site.pages << SubjectPage.new(@site, @graph, subject_config["layout"], name, subject)
+        end
+      end
+    end
 
-      # graph.each_subject do |subject|
-      #   site.pages << ObjectPage.new(site, site.source, graph, subject)
-      # end
+    def page_queries
+      @site.pages.select { |page| page.data["rdf"] }.each do |page|
+        page.data["rdf"]["queries"].each do |key, query_template|
+          if query_template.is_a? Array
+            array = true
+            query_template = query_template.first
+          end
+
+          query = page.data["subject"] ? Liquid::Template.parse(query_template).render("subject" => page.data["subject"]) : query_template
+
+          solutions = SPARQL.execute(query, @graph)
+          solution_hashes = solutions.map do |solution|
+            Hash[solution.to_h.map{ |k, v| [k.to_s, v.to_s] }]
+          end
+
+          page.data[key] = array ? solution_hashes : solution_hashes.first
+        end
+      end
     end
   end
 end
