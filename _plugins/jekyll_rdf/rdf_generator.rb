@@ -15,10 +15,6 @@ module JekyllRDF
         @graph << RDF::Graph.load(file)
       end
 
-      index = site.pages.detect {|page| page.name == "index.html"}
-
-      # binding.pry
-
       subject_pages
       page_queries
     end
