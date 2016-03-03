@@ -1,11 +1,6 @@
 ---
 layout: default
 rdf:
-  subject: >
-    SELECT *
-    WHERE {
-      ?subject a <mo:MusicGroup>.
-    }
   queries:
     artist: |
       SELECT *
@@ -19,5 +14,12 @@ rdf:
           ?event <mo:performer> <{{ subject }}>;
         }
 ---
-<pre>{{ page.artist }}</pre>
-<pre>{{ page.events }}</pre>
+<h2>{{ page.artist.name }}</h2>
+<h4>Events</h4>
+<ul>
+  {% for event in page.events %}
+  <li>
+    {{ event.event }}
+  </li>
+  {% endfor %}
+</ul>
