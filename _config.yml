@@ -19,3 +19,24 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+
+rdf:
+  subjects:
+    - layout: "artist.html"
+      query: |
+        SELECT *
+        WHERE {
+          ?subject a <mo:MusicGroup>;
+            <foaf:name> ?name.
+        }
+      url: "artists/{{ name | uri_escape }}.html"
+    - layout: "event.html"
+      query: |
+        SELECT *
+        WHERE {
+          ?subject a <mo:Performance>;
+            <dc:date> ?date;
+            <mo:performer> ?performer.
+          ?performer <foaf:name> ?performerName.
+        }
+      url: "events/{{ date }}-{{ performerName | slugify }}.html"
