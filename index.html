@@ -1,10 +1,21 @@
 ---
 layout: default
+rdf:
+  queries:
+    artists:
+      - |
+        SELECT *
+        WHERE {
+          ?subject a <mo:MusicGroup>;
+            <foaf:name> ?name.
+        }
 ---
+
+<h4>Artists</h4>
 <ul>
-{% for object in site.data.graph %}
-<li>
-  <a href="">{{ object["uri"] }} - {{ object.properties["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"] }}</a>
-</li>
-{% endfor %}
+  {% for artist in page.artists %}
+  <li>
+    {{ artist.name }}
+  </li>
+  {% endfor %}
 </ul>
