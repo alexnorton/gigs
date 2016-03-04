@@ -33,7 +33,9 @@ module JekyllRDF
             subject_config["url"]
           ).render(solution_hash)
 
-          @site.pages << SubjectPage.new(@site, @graph, subject_config["layout"], name, subject)
+          @site.pages << SubjectPage.new(
+            @site, @graph, subject_config["layout"], name, subject
+          )
         end
       end
     end
@@ -46,9 +48,16 @@ module JekyllRDF
             query_template = query_template.first
           end
 
-          query = page.data["subject"] ? Liquid::Template.parse(query_template).render("subject" => page.data["subject"]) : query_template
+          if page.data["subject"]
+            query = Liquid::Template.parse(query_template).render(
+              "subject" => page.data["subject"]
+            )
+          else
+            query = query_template
+          end
 
           solutions = SPARQL.execute(query, @graph)
+
           solution_hashes = solutions.map do |solution|
             Hash[solution.to_h.map{ |k, v| [k.to_s, v.to_s] }]
           end
