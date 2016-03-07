@@ -29,7 +29,7 @@ rdf:
           ?subject a <mo:MusicGroup>;
             <foaf:name> ?name.
         }
-      url: "artists/{{ name | uri_escape }}.html"
+      url: "artists/{{ name | slugify }}.html"
     - layout: "event.html"
       query: |
         SELECT *

@@ -6,12 +6,13 @@ require "pry"
 
 module JekyllRDF
   class RDFGenerator < Jekyll::Generator
+    Liquid::Template.register_filter(Jekyll::Filters)
 
     def generate(site)
       @site = site
       @graph = RDF::Graph.new
 
-      Dir["_graph/*"].each do |file|
+      Dir["_graph/**/*"].select { |path| File.file?(path) }.each do |file|
         @graph << RDF::Graph.load(file)
       end
 
