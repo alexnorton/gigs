@@ -1,0 +1,6 @@
+{
+  "@type": "schema:Place",
+  "@id": "https://www.alexnorton.com/gigs/venue/Manchester-Arena",
+  "foaf:name": "Manchester Arena",
+  "address": "Victoria Station\nHunts Bank\nManchester\nM3 1AR"
+}

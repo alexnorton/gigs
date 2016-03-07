@@ -1,0 +1,11 @@
+---
+layout: default
+rdf:
+  queries:
+    venue: |
+      SELECT *
+      WHERE {
+        <{{ subject }}> <foaf:name> ?name.
+      }
+---
+<h2>{{ page.venue.name }}</h2>
