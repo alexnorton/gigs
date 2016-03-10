@@ -20,6 +20,8 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock']
+
 rdf:
   subjects:
     - layout: "artist.html"
