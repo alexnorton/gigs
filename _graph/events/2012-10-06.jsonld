@@ -1,0 +1,14 @@
+{
+  "@id": "https://www.alexnorton.com/gigs/events/2012-10-06",
+  "@type": "mo:Performance",
+  "event:place": {
+    "@id": "https://www.alexnorton.com/gigs/venue/Manchester-Arena"
+  },
+  "dc:date": {
+    "@value": "2012-10-06",
+    "@type": "xsd:date"
+  },
+  "mo:performer": {
+    "@id": "https://www.alexnorton.com/gigs/artist/Radiohead"
+  }
+}
