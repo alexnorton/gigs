@@ -1,0 +1,21 @@
+{
+  "name": "gigs",
+  "homepage": "https://github.com/alexnorton/gigs",
+  "authors": [
+    "Alex Norton <alex.norton@bbc.co.uk>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootswatch-dist": "readable"
+  }
+}
