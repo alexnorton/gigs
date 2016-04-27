@@ -1,0 +1,21 @@
+---
+layout: default
+rdf:
+  queries:
+    venues:
+      - |
+        SELECT *
+        WHERE {
+          ?subject a <schema:Place>;
+            <foaf:name> ?name;
+            <schema:Address> ?address.
+          ?address <schema:addressLocality> ?address_locality;
+            <schema:addressCountry> ?address_country.
+        }
+---
+<h2>Venues</h2>
+<ul>
+  {% for venue in page.venues %}
+    <li><a href="{{ site.baseurl }}{{ site.data.subject_pages[venue.subject] }}">{{ venue.name }} - {{ venue.address_locality }}, {{ venue.address_country }}</a></li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,21 @@
+---
+layout: default
+rdf:
+  queries:
+    artists:
+      - |
+        SELECT *
+        WHERE {
+          ?subject a <mo:MusicGroup>;
+            <foaf:name> ?name.
+        }
+---
+
+<h2>Artists</h2>
+<ul>
+  {% for artist in page.artists %}
+  <li>
+    <a href="{{ site.baseurl }}{{ site.data.subject_pages[artist.subject] }}">{{ artist.name }}</a>
+  </li>
+  {% endfor %}
+</ul>

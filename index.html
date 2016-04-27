@@ -1,21 +1,7 @@
 ---
 layout: default
-rdf:
-  queries:
-    artists:
-      - |
-        SELECT *
-        WHERE {
-          ?subject a <mo:MusicGroup>;
-            <foaf:name> ?name.
-        }
 ---
 
-<h4>Artists</h4>
-<ul>
-  {% for artist in page.artists %}
-  <li>
-    {{ artist.name }}
-  </li>
-  {% endfor %}
-</ul>
+<p>This is my attempt at creating a gig journal, statically published using <a href="http://jekyllrb.com/">Jekyll</a> and powered by linked data.</p>
+
+<p>Find the code on <a href="http://github.com/alexnorton/gigs">GitHub</a>.</p>

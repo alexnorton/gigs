@@ -1,0 +1,26 @@
+---
+layout: default
+rdf:
+  queries:
+    events:
+      - |
+        SELECT *
+        WHERE {
+          ?event a <mo:Performance>;
+            <dc:date> ?date;
+            <event:place> ?venue;
+            <mo:performer> ?performer.
+          ?venue <foaf:name> ?venue_name.
+          ?performer <foaf:name> ?performer_name.
+        }
+---
+<h2>Events</h2>
+<ul>
+  {% for event in page.events %}
+  <li>
+    <a href="{{ site.baseurl }}{{ site.data.subject_pages[event.event] }}">
+      {{ event.date | date: '%-d %B %Y' }} - {{ event.performer_name }} - {{ event.venue_name }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
