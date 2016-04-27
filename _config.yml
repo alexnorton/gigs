@@ -20,7 +20,7 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 
-exclude: ['README.md', 'Gemfile', 'Gemfile.lock']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'bower.json']
 
 rdf:
   subjects:
