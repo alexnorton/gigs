@@ -12,6 +12,8 @@ module JekyllRDF
       @site = site
       @graph = RDF::Graph.new
 
+      @site.data["subject_pages"] = {}
+
       Dir["_graph/**/*"].select { |path| File.file?(path) }.each do |file|
         @graph << RDF::Graph.load(file)
       end
@@ -33,6 +35,8 @@ module JekyllRDF
           name = Liquid::Template.parse(
             subject_config["url"]
           ).render(solution_hash)
+
+          @site.data["subject_pages"][subject.to_s] = "/" + name
 
           @site.pages << SubjectPage.new(
             @site, @graph, subject_config["layout"], name, subject
