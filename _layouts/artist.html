@@ -6,12 +6,19 @@ rdf:
       SELECT *
       WHERE {
         <{{ subject }}> <foaf:name> ?name.
+        OPTIONAL {
+          <{{ subject }}> <owl:sameAs> ?musicbrainz_id
+          FILTER regex(str(?musicbrainz_id), '^http://musicbrainz.org/', 'i')
+        }
       }
     events:
       - |
         SELECT *
         WHERE {
           ?event <mo:performer> <{{ subject }}>;
+            <dc:date> ?date;
+            <event:place> ?venue.
+          ?venue <foaf:name> ?venue_name.
         }
 ---
 <h2>{{ page.artist.name }}</h2>
@@ -19,7 +26,9 @@ rdf:
 <ul>
   {% for event in page.events %}
   <li>
-    {{ event.event }}
+    <a href="{{ site.baseurl }}{{ site.data.subject_pages[event.event] }}">
+      {{ event.date | date: '%-d %B %Y' }} - {{ event.venue_name }}
+    </a>
   </li>
   {% endfor %}
 </ul>
