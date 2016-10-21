@@ -14,30 +14,39 @@ markdown: kramdown
 exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'bower.json']
 
 rdf:
+  prefixes:
+    rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    foaf: "http://xmlns.com/foaf/0.1/"
+    schema: "http://schema.org/"
+    an: "https://www.alexnorton.com/gigs/ontology/"
+    owl: "http://www.w3.org/2002/07/owl#"
+    event: "http://purl.org/NET/c4dm/event.owl#"
+    mo: "http://purl.org/ontology/mo/"
+    dc: "http://purl.org/dc/elements/1.1/"
   subjects:
     - layout: "artist.html"
       query: |
         SELECT *
         WHERE {
-          ?subject a <mo:MusicGroup>;
-            <foaf:name> ?name.
+          ?subject a mo:MusicGroup;
+            foaf:name ?name.
         }
       url: "artists/{{ name | slugify }}.html"
     - layout: "event.html"
       query: |
         SELECT *
         WHERE {
-          ?subject a <mo:Performance>;
-            <dc:date> ?date;
-            <mo:performer> ?performer.
-          ?performer <foaf:name> ?performerName.
+          ?subject a mo:Performance;
+            dc:date ?date;
+            mo:performer ?performer.
+          ?performer foaf:name ?performerName.
         }
       url: "events/{{ date }}-{{ performerName | slugify }}.html"
     - layout: "venue.html"
       query: |
         SELECT *
         WHERE {
-          ?subject a <schema:Place>;
-            <foaf:name> ?name.
+          ?subject a an:Venue;
+            foaf:name ?name.
         }
       url: "venues/{{ name | slugify }}.html"

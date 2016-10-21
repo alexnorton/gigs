@@ -6,11 +6,11 @@ rdf:
       - |
         SELECT *
         WHERE {
-          ?subject a <schema:Place>;
-            <foaf:name> ?name;
-            <schema:Address> ?address.
-          ?address <schema:addressLocality> ?address_locality;
-            <schema:addressCountry> ?address_country.
+          ?subject a an:Venue;
+            foaf:name ?name;
+            schema:Address ?address.
+          ?address schema:addressLocality ?address_locality;
+            schema:addressCountry ?address_country.
         }
 ---
 <h2>Venues</h2>

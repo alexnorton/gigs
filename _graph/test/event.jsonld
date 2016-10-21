@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "mo": "http://purl.org/ontology/mo/"
+  },
+  "@id": "http://etree.linkedmusic.org/performance/Mogwai1996-05-18",
+  "@type": "mo:Performance",
+  "rdfs:label": "A performance by Mogwai",
+  "mo:performer": {
+    "@id": "http://musicbrainz.org/artist/d700b3f5-45af-4d02-95ed-57d301bda93e#_"
+  },
+  "dc:date": {
+    "@value": "1996-05-18",
+    "@type": "xsd:date"
+  },
+  "event:place": {
+    "@id": "http://etree.linkedmusic.org/venue/Mogwai1996-05-18"
+  },
+  "event:sub_event": {
+    "@id": "http://etree.linkedmusic.org/track/Mogwai1996-05-18-1",
+    "rdfs:label": "Summer"
+  }
+}

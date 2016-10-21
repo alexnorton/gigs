@@ -6,12 +6,12 @@ rdf:
       - |
         SELECT *
         WHERE {
-          ?event a <mo:Performance>;
-            <dc:date> ?date;
-            <event:place> ?venue;
-            <mo:performer> ?performer.
-          ?venue <foaf:name> ?venue_name.
-          ?performer <foaf:name> ?performer_name.
+          ?event a mo:Performance;
+            dc:date ?date;
+            event:place ?venue;
+            mo:performer ?performer.
+          ?venue foaf:name ?venue_name.
+          ?performer foaf:name ?performer_name.
         }
 ---
 <h2>Events</h2>

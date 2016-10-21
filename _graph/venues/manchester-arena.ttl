@@ -1,0 +1,16 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix an: <https://www.alexnorton.com/gigs/ontology/> .
+
+<https://www.alexnorton.com/gigs/venue/Manchester-Arena#>
+  rdf:type an:Venue;
+  foaf:name "Manchester Arena";
+  schema:Address [
+    rdf:type schema:PostalAddress;
+    schema:streetAddress "Victoria Station\nHunts Bank";
+    schema:addressLocality "Manchester";
+    schema:addressRegion "Greater Manchester";
+    schema:postalCode "M3 1AR";
+    schema:addressCountry "United Kingdom"
+  ] .

@@ -1,0 +1,13 @@
+{
+  "@type": "an:Venue",
+  "@id": "https://www.alexnorton.com/gigs/venue/Koko",
+  "foaf:name": "Koko",
+  "schema:Address": {
+    "@type": "schema:PostalAddress",
+    "schema:streetAddress": "1A Camden High St",
+    "schema:addressLocality": "London",
+    "schema:addressRegion": "Greater London",
+    "schema:postalCode": "NW1 7JE",
+    "schema:addressCountry": "United Kingdom"
+  }
+}

@@ -5,9 +5,9 @@ rdf:
     artist: |
       SELECT *
       WHERE {
-        <{{ subject }}> <foaf:name> ?name.
+        <{{ subject }}> foaf:name ?name.
         OPTIONAL {
-          <{{ subject }}> <owl:sameAs> ?musicbrainz_id
+          <{{ subject }}> owl:sameAs ?musicbrainz_id
           FILTER regex(str(?musicbrainz_id), '^http://musicbrainz.org/', 'i')
         }
       }
@@ -15,10 +15,10 @@ rdf:
       - |
         SELECT *
         WHERE {
-          ?event <mo:performer> <{{ subject }}>;
-            <dc:date> ?date;
-            <event:place> ?venue.
-          ?venue <foaf:name> ?venue_name.
+          ?event mo:performer <{{ subject }}>;
+            dc:date ?date;
+            event:place ?venue.
+          ?venue foaf:name ?venue_name.
         }
 ---
 <h2>{{ page.artist.name }}</h2>
